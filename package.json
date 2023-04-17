@@ -1,0 +1,28 @@
+{
+  "name": "interceptor",
+  "version": "1.0.0",
+  "description": "simple forward proxy",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && copyfiles ./scr/**/* ./dist",
+    "start-proxy": "node ./dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vtanathip/interceptor.git"
+  },
+  "author": "Tanathip Viriya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vtanathip/interceptor/issues"
+  },
+  "homepage": "https://github.com/vtanathip/interceptor#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "copyfiles": "^2.4.1",
+    "hoxy": "^3.3.1"
+  }
+}
