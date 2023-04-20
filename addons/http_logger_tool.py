@@ -36,14 +36,19 @@ class HTTPLoggerTools:
         if (self.url_path_for_log in self.session_request_path):
             self.request_payload.extend(self.response_payload)
             logging.info("Merged - %s", self.request_payload)
-
-            self.num = self.num + 1
-            path = self.log_location + "\http_log_" + str(self.num) + ".json"
-            with open(path, "w") as write_file:
-                json.dump(self.request_payload, write_file, indent=4)
-
+            self.logging_to_file()
             self.request_payload = []
             self.response_payload = []
+
+    def logging_to_file(self):
+        path = self.gen_filename()
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as write_file:
+            json.dump(self.request_payload, write_file, indent=4)
+
+    def gen_filename(self):
+        self.num = self.num + 1
+        return self.log_location + "\http_log_" + str(self.num) + ".json"
 
     def read_configuration_file(self):
         thisfolder = os.path.dirname(os.path.abspath(__file__))
