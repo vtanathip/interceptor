@@ -4,6 +4,7 @@ For log specific request and response to json data
 
 ## How to use Mitm add-on
 
+- download mitmproxy <https://mitmproxy.org/>
 - Setup machine proxy to <http://127.0.0.1:8080>
 - Install certificate from this web <http://mitm.it/>
 - Write add-on python script
