@@ -24,13 +24,26 @@ class HTTPLoggerTools:
             if (flow.request.method != "GET"):
                 logging.info("Request pattern from configured URL: %s",
                              flow.request.url)
-                self.request_payload.append(json.loads(flow.request.content))
+                headersdata = {
+                    "headers": {
+                        "User-Agent": flow.request.headers['User-Agent']
+                    }
+                }
+                self.request_payload.append(
+                    headersdata)
+                request_body = {
+                    "request_body": json.loads(flow.request.content)
+                }
+                self.request_payload.append(request_body)
 
     def response(self, flow: http.HTTPFlow):
         if (self.url_path_for_log in self.session_request_path):
             logging.info("Response data from configured URL: %s",
                          flow.request.url)
-            self.response_payload.append(flow.response.status_code)
+            http_response_data = {
+                "http_response_code": flow.response.status_code
+            }
+            self.response_payload.append(http_response_data)
             self.request_payload.extend(self.response_payload)
             logging.info("Merged - %s", self.request_payload)
             self.logging_to_file()
