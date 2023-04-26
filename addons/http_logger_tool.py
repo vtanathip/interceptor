@@ -30,7 +30,7 @@ class HTTPLoggerTools:
         if (self.url_path_for_log in self.session_request_path):
             logging.info("Response data from configured URL: %s",
                          flow.request.url)
-            self.response_payload.append(flow.response.content)
+            self.response_payload.append(flow.response.status_code)
             self.request_payload.extend(self.response_payload)
             logging.info("Merged - %s", self.request_payload)
             self.logging_to_file()
