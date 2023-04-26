@@ -22,18 +22,15 @@ class HTTPLoggerTools:
         self.session_request_path = flow.request.path
         if (self.url_path_for_log in self.session_request_path):
             if (flow.request.method != "GET"):
-                logging.info("Found request pattern from configured URL: %s",
+                logging.info("Request pattern from configured URL: %s",
                              flow.request.url)
                 self.request_payload.append(json.loads(flow.request.content))
 
     def response(self, flow: http.HTTPFlow):
         if (self.url_path_for_log in self.session_request_path):
-            logging.info("Found response data from configured URL: %s",
+            logging.info("Response data from configured URL: %s",
                          flow.request.url)
-            self.response_payload.append(json.loads(flow.response.content))
-
-    def client_disconnected(self, data):
-        if (self.url_path_for_log in self.session_request_path):
+            self.response_payload.append(flow.response.content)
             self.request_payload.extend(self.response_payload)
             logging.info("Merged - %s", self.request_payload)
             self.logging_to_file()
