@@ -1,0 +1,26 @@
+{
+    "mock_services": [
+        {
+            "description": "mock for test case #1",
+            "url_patterns": [
+                "A",
+                "B",
+                "C"
+            ],
+            "response": {
+                "some data": "123"
+            }
+        },
+        {
+            "description": "mock for test case #2",
+            "url_patterns": [
+                "A",
+                "B",
+                "C"
+            ],
+            "response": {
+                "some data": "123"
+            }
+        }
+    ]
+}
