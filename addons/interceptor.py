@@ -1,6 +1,7 @@
 import os
 import json
 from mitmproxy import http
+import re
 
 
 class JsonLoader:
@@ -21,6 +22,12 @@ class JsonLoader:
 
 
 class MockingBird:
+    def all_keywords_in_url(self, keywords, url):
+        for keyword in keywords:
+            pattern = r"\b%s\b" % re.escape(keyword)
+            if not re.search(pattern, url):
+                return False
+        return True
 
     def response(self, flow: http.HTTPFlow):
         print("Mock response")
