@@ -3,13 +3,11 @@
         {
             "description": "mock for test case #1",
             "request_patterns": [
-                "A",
-                "B",
-                "C"
+                "v1",
+                "Activities",
+                "azurewebsites"
             ],
-            "response": {
-                "data_file": "dummy.json"
-            }
+            "data_file": "sample.json"
         }
     ]
 }
