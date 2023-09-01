@@ -6,6 +6,7 @@ For log specific request and response to json data
 
 - download mitmproxy <https://mitmproxy.org/>
 - Setup machine proxy to <http://127.0.0.1:8080>
+- Open mitmproxy for route all traffic for install certificate
 - Install certificate from this web <http://mitm.it/>
 - Write add-on python script
 - Execute Mitmproxy to accept own python script
